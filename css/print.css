@@ -1,0 +1,16 @@
+/* print.css — printing the portfolio should give a clean CV, not a screenshot.
+   Loaded with media="print" so it never affects the screen design. */
+@media print {
+  .nav, .progress, .filters, .modal, .contact-form, .hero-actions { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .hero { padding: 0; }
+  .hero-inner { grid-template-columns: 1fr; gap: 12px; }
+  .hero-card { box-shadow: none; border: 1px solid #ccc; max-width: 320px; }
+  .section { padding: 18px 0; max-width: none; }
+  .project-grid, .cap-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-card, .cap, .featured-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  .cover { height: 90px !important; }
+  .cover .mono { font-size: 32px !important; }
+  a { color: #000; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #555; }
+}
