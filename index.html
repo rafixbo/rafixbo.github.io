@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nohin Tafsir Rafi — Developer from Bangladesh</title>
+<meta name="description" content="Nohin Tafsir Rafi (@rafixbo) — developer from Dhaka, Bangladesh. Building exam platforms, learning apps, shops and Telegram bots. Bots, automation, AI and real-time systems.">
+<meta property="og:title" content="Nohin Tafsir Rafi — Developer">
+<meta property="og:description" content="I build smooth, practical products for Bangladeshi students — exam platforms, learning apps, khata shops and Telegram bots.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/87462837?v=4">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/87462837?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="progress" id="progress"></div>
+
+<header class="nav">
+  <a class="logo" href="#top">Rafi<span>.</span></a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <p class="hero-eyebrow reveal">👋 Assalamualaikum — I'm</p>
+    <h1 class="hero-name">
+      <span class="line">Nohin Tafsir</span>
+      <span class="line gradient">Rafi</span>
+    </h1>
+    <p class="hero-role reveal">Developer from <strong>Dhaka, Bangladesh</strong> 🇧🇩</p>
+    <p class="hero-sub reveal">I build smooth, practical products for Bangladeshi students — exam platforms, learning apps, khata shops and Telegram bots. Bots, automation, AI and real-time systems.</p>
+    <div class="hero-actions reveal">
+      <a class="btn primary" href="#projects">See my projects ↓</a>
+      <a class="btn ghost" href="https://github.com/rafixbo" target="_blank" rel="noopener">GitHub @rafixbo ↗</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div><strong data-count="6">0</strong><span>Projects shipped</span></div>
+      <div><strong data-count="5">0</strong><span>Public repos</span></div>
+      <div><strong>2021</strong><span>On GitHub since</span></div>
+    </div>
+    <img class="hero-avatar reveal" src="https://avatars.githubusercontent.com/u/87462837?v=4" alt="Nohin Tafsir Rafi">
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>TypeScript ✦ Next.js ✦ Flutter ✦ Node.js ✦ Python ✦ Prisma ✦ Telegram Bots ✦ Vercel ✦&nbsp;</span>
+      <span>TypeScript ✦ Next.js ✦ Flutter ✦ Node.js ✦ Python ✦ Prisma ✦ Telegram Bots ✦ Vercel ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <p class="kicker reveal">About me</p>
+    <h2 class="section-title reveal">It started with one question:<br><em>“How does this work?”</em></h2>
+    <div class="about-grid">
+      <p class="about-text reveal">What started as curiosity has evolved into a deep passion for technology and innovation. From understanding software fundamentals to writing my first lines of code, every discovery fuelled my desire to learn more and push the boundaries of what's possible.</p>
+      <p class="about-text reveal">My expertise spans bots, automation, AI, and real-time systems. I build projects not just to master programming, but to create practical solutions that solve real-world problems — with a research-driven approach, combining technical knowledge with creative problem-solving.</p>
+    </div>
+    <div class="about-cards">
+      <div class="mini-card reveal"><h3>🎓 For students</h3><p>Free exam &amp; learning tools for SSC / HSC students across Bangladesh.</p></div>
+      <div class="mini-card reveal"><h3>✨ Smooth first</h3><p>Soft, fast, 60fps-feeling UI. No harsh, no janky — clean and premium.</p></div>
+      <div class="mini-card reveal"><h3>🔧 Real &amp; used</h3><p>Every project is built to be actually used, not just demoed.</p></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <p class="kicker reveal">What I work with</p>
+    <h2 class="section-title reveal">Stack &amp; skills</h2>
+    <div class="skills" id="skillsGrid"></div>
+    <div class="github-stats reveal">
+      <img src="https://github-readme-stats.vercel.app/api?username=rafixbo&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Rafi's GitHub stats" loading="lazy">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafixbo&layout=compact&theme=tokyonight&hide_border=true" alt="Rafi's most used languages" loading="lazy">
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <p class="kicker reveal">Selected work</p>
+    <div class="projects-head">
+      <h2 class="section-title reveal">Projects</h2>
+      <button class="btn small" id="addProjectBtn">＋ Add project</button>
+    </div>
+    <p class="projects-note reveal">New project? Click <strong>Add project</strong> above, or edit <code>projects.json</code> in the repo — the site updates automatically on the next push.</p>
+    <div class="filters reveal" id="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="EdTech">EdTech</button>
+      <button class="filter" data-filter="Bot">Bots</button>
+      <button class="filter" data-filter="E-commerce">Shop</button>
+    </div>
+    <div class="project-grid" id="projectGrid"></div>
+    <p class="empty hidden" id="emptyMsg">No projects in this category yet.</p>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey" class="section">
+    <p class="kicker reveal">Journey</p>
+    <h2 class="section-title reveal">How I got here</h2>
+    <ol class="timeline">
+      <li class="reveal"><span>2021</span><h3>First lines of code</h3><p>Joined GitHub as @rafixbo. Curiosity turned into building.</p></li>
+      <li class="reveal"><span>2025</span><h3>Bots &amp; automation</h3><p>Telegram stream-downloader bot, watermark tools and real-time systems.</p></li>
+      <li class="reveal"><span>2026</span><h3>EdTech for Bangladesh</h3><p>Exam platform, Course LMS and KOLPOCRAFT khata shop for SSC / HSC students.</p></li>
+      <li class="reveal"><span>2026</span><h3>Shikho Premium</h3><p>Full learning platform — Flutter app, NestJS backend, Next.js admin, Bunny.net video.</p></li>
+    </ol>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <p class="kicker reveal">Contact</p>
+    <h2 class="section-title reveal">Let's build something<br><em>useful together.</em></h2>
+    <p class="reveal">Have an idea, a project, or a collab in mind? My GitHub is the fastest way to reach me.</p>
+    <div class="contact-links reveal">
+      <a class="btn primary" href="https://github.com/rafixbo" target="_blank" rel="noopener">GitHub — @rafixbo ↗</a>
+      <a class="btn ghost" href="https://www.pinterest.com/nohintafsir/" target="_blank" rel="noopener">Pinterest ↗</a>
+      <a class="btn ghost" href="https://lifeisworst.com/" target="_blank" rel="noopener">lifeisworst.com ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Nohin Tafsir Rafi · Dhaka, Bangladesh · Built with GSAP, hosted on GitHub Pages</p>
+  <p class="foot-note">Edit <code>projects.json</code> to add your next project.</p>
+</footer>
+
+<!-- ADD PROJECT MODAL -->
+<div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-label="Add a project">
+  <form class="modal-card" id="projectForm">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <h3>Add a new project</h3>
+    <p class="modal-sub">This adds it to the page right now. To keep it live, download the updated <code>projects.json</code> below and commit it to the repo.</p>
+    <label>Project title <input name="title" required placeholder="e.g. My New App"></label>
+    <label>Tag / category <input name="tag" required placeholder="e.g. EdTech · SSC / HSC"></label>
+    <label>Short description <textarea name="description" rows="3" required placeholder="What does it do, and who is it for?"></textarea></label>
+    <label>Tech (comma separated) <input name="tech" placeholder="Next.js, TypeScript"></label>
+    <label>Year <input name="year" value="2026"></label>
+    <label>Link (optional) <input name="link" type="url" placeholder="https://…"></label>
+    <label>Link label <input name="linkLabel" placeholder="Visit live site"></label>
+    <label>Status <input name="status" value="Live" placeholder="Live / In production / Built"></label>
+    <div class="modal-actions">
+      <button class="btn primary" type="submit">Add project</button>
+      <button class="btn ghost hidden" type="button" id="downloadBtn">⬇ Download updated projects.json</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
