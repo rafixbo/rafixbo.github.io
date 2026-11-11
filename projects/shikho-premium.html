@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shikho Premium — Nohin Tafsir Rafi</title>
+<meta name="description" content="A full premium learning platform for Bangladesh — a Flutter student app, a NestJS + PostgreSQL backend, a Next.js admin panel, and Bunny.net video, with wallet and manual bKash / Nagad payments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav">
+  <a class="logo" href="../index.html">Nohin Tafsir Rafi</a>
+  <nav><a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a></nav>
+  <a class="nav-cta" href="../index.html#contact">Contact →</a>
+</header>
+<main class="case">
+  <p class="case-back"><a href="../index.html#work">← All work</a></p>
+  <div class="cover cover-blue case-cover"><span class="mono">SP</span><span class="cover-tag">Online Learning Platform</span></div>
+  <div class="case-head">
+    <div><p class="kicker">Case study · 2026</p><h1>Shikho Premium</h1></div>
+    <span class="status">In production</span>
+  </div>
+  <p class="case-intro">A full premium learning platform for Bangladesh — a Flutter student app, a NestJS + PostgreSQL backend, a Next.js admin panel, and Bunny.net video, with wallet and manual bKash / Nagad payments.</p>
+  <div class="case-meta">
+    <div><strong>Year</strong><span>2026</span></div>
+    <div><strong>Status</strong><span>In production</span></div>
+    <div><strong>Stack</strong><span>Flutter, NestJS, PostgreSQL, Next.js, Bunny.net, Prisma, Vercel</span></div>
+  </div>
+  <section><h2>The problem</h2><p>Students in Bangladesh buy courses from Facebook pages and Telegram groups, then watch them in unprotected players. Creators lose their videos to downloads within hours, and there is no clean way to sell, manage students, or take bKash / Nagad payments in one place.</p></section>
+  <section><h2>What was built</h2><ul class="case-list"><li><strong>Flutter student app</strong> — home, My Learning, lecture progress, and native HLS playback with Bunny signed URLs.</li>
+<li><strong>Secure playback</strong> — FLAG_SECURE, no download UI, no MP4 link, short-lived signed HLS only, and a moving watermark showing the student's email running side-to-side across the video.</li>
+<li><strong>NestJS + PostgreSQL backend</strong> — 115 endpoints: auth, courses, lectures, wallet, payment requests, uploads, admin students and app settings.</li>
+<li><strong>Next.js admin</strong> — add courses and lectures, paste a Bunny link per video (with optional Referer / Origin), auto-capture video duration, manage students, wallet and payments.</li>
+<li><strong>Payments</strong> — wallet balance plus manual bKash / Nagad with QR, approved by admin — the way Bangladeshi students actually pay.</li></ul></section>
+  <section><h2>The hard part</h2><p>The hardest part was video security without breaking playback. Bunny has no per-video Origin / Referer — only library-level token auth — so the design had to use signed HLS, short expiry, and a moving email watermark instead. The release build also fought AGP 9: two abandoned plugins had no namespace and one used jcenter(), so one was vendored and patched and the other was removed entirely, with FLAG_SECURE moved into MainActivity.</p></section>
+  <section><h2>Outcome</h2><p>Backend typechecks clean, Vercel production deploy is live at shikho-premium-backend.vercel.app, the release APK is signed with its own keystore, and the admin can publish a course by pasting a Bunny link — no Bunny API keys needed.</p></section>
+  <div class="case-actions">
+    <a class="btn primary" href="https://shikho-premium-backend.vercel.app/api/v1/health" target="_blank" rel="noopener">Backend API ↗</a>
+    <a class="btn outline" href="../index.html#work">← Back to all work</a>
+  </div>
+  <nav class="case-next"><a href="kolpocraft.html">Next project: <strong>KOLPOCRAFT →</strong></a></nav>
+</main>
+<footer><p class="foot-big">Nohin Tafsir Rafi</p><p>© <span id="year"></span> · Dhaka, Bangladesh · Built with GSAP, hosted on GitHub Pages</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

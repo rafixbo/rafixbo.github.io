@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telegram Stream Bot — Nohin Tafsir Rafi</title>
+<meta name="description" content="A Telegram lecture downloader bot that posts streams into forum topics in a premium decorated style, with RAM auto-clean so it never crashes on overload.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav">
+  <a class="logo" href="../index.html">Nohin Tafsir Rafi</a>
+  <nav><a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a></nav>
+  <a class="nav-cta" href="../index.html#contact">Contact →</a>
+</header>
+<main class="case">
+  <p class="case-back"><a href="../index.html#work">← All work</a></p>
+  <div class="cover cover-rose case-cover"><span class="mono">SB</span><span class="cover-tag">Bot · Automation</span></div>
+  <div class="case-head">
+    <div><p class="kicker">Case study · 2026</p><h1>Telegram Stream Bot</h1></div>
+    <span class="status">Live</span>
+  </div>
+  <p class="case-intro">A Telegram lecture downloader bot that posts streams into forum topics in a premium decorated style, with RAM auto-clean so it never crashes on overload.</p>
+  <div class="case-meta">
+    <div><strong>Year</strong><span>2026</span></div>
+    <div><strong>Status</strong><span>Live</span></div>
+    <div><strong>Stack</strong><span>Python, Pyrogram, Flask</span></div>
+  </div>
+  <section><h2>The problem</h2><p>Lectures arrive as links and files scattered across chats. Teachers need them organised into forum topics, posted beautifully, and delivered without the bot dying halfway through a batch.</p></section>
+  <section><h2>What was built</h2><ul class="case-list"><li><strong>Topic-batch uploads</strong> — a .txt uploader posts lectures into forum topics, with a Pyrogram + Flask web admin.</li>
+<li><strong>Premium decoration</strong> — every post in a premium layout, every line in glossy animated emojis, with per-line custom emoji IDs from the owner's Premium set.</li>
+<li><strong>RAM auto-clean</strong> — gc plus orphan temp cleanup, a 60-second watchdog, a pre-download check that skips a lecture when free RAM stays below 256 MB after cleaning, and a /ramclean command.</li>
+<li><strong>Survives overload</strong> — thresholds use free MB (warn 512, critical 256), not percent, because percent misleads across VM sizes.</li></ul></section>
+  <section><h2>The hard part</h2><p>MTProto connection timeouts made the bot flap while the web admin still answered 200 — the fix, the watchdog, and the RAM guard were all about making a long-running bot behave on a small, temporary host. Google Cloud Shell sessions end after about an hour of inactivity, so the durable fix is a real VM with systemd.</p></section>
+  <section><h2>Outcome</h2><p>A bot that posts lectures into topics in premium style, cleans up after itself, and keeps going instead of crashing on overload.</p></section>
+  <div class="case-actions">
+    
+    <a class="btn outline" href="../index.html#work">← Back to all work</a>
+  </div>
+  <nav class="case-next"><a href="watermark-bot.html">Next project: <strong>Watermark Remover Bot →</strong></a></nav>
+</main>
+<footer><p class="foot-big">Nohin Tafsir Rafi</p><p>© <span id="year"></span> · Dhaka, Bangladesh · Built with GSAP, hosted on GitHub Pages</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KOLPOCRAFT — Nohin Tafsir Rafi</title>
+<meta name="description" content="An SSC / HSC handwritten practical khata shop — login-gated ordering, admin-approved reviews, categories, search, and a smooth mobile-first storefront. Live on Vercel, with alwaysdata as the persistent host.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav">
+  <a class="logo" href="../index.html">Nohin Tafsir Rafi</a>
+  <nav><a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a></nav>
+  <a class="nav-cta" href="../index.html#contact">Contact →</a>
+</header>
+<main class="case">
+  <p class="case-back"><a href="../index.html#work">← All work</a></p>
+  <div class="cover cover-emerald case-cover"><span class="mono">KO</span><span class="cover-tag">E-commerce · Practical Khata Shop</span></div>
+  <div class="case-head">
+    <div><p class="kicker">Case study · 2026</p><h1>KOLPOCRAFT</h1></div>
+    <span class="status">Live</span>
+  </div>
+  <p class="case-intro">An SSC / HSC handwritten practical khata shop — login-gated ordering, admin-approved reviews, categories, search, and a smooth mobile-first storefront. Live on Vercel, with alwaysdata as the persistent host.</p>
+  <div class="case-meta">
+    <div><strong>Year</strong><span>2026</span></div>
+    <div><strong>Status</strong><span>Live</span></div>
+    <div><strong>Stack</strong><span>Node.js, SQLite, Vercel, alwaysdata</span></div>
+  </div>
+  <section><h2>The problem</h2><p>Students need practical khatas for SSC and HSC, but ordering them online was messy: guest orders with no accountability, reviews nobody moderated, and a storefront that felt cheap on a phone.</p></section>
+  <section><h2>What was built</h2><ul class="case-list"><li><strong>Login-gated ordering</strong> — no order without an account; guests are redirected to login with a Bangla message, and the server rejects unauthenticated orders too.</li>
+<li><strong>Admin control</strong> — products, prices, categories, reviews (Pending until admin publishes), FAQ, hero and payments, all from the admin panel.</li>
+<li><strong>Categories as pills only</strong> — no category cards; admin-added categories appear in the pill row above the grid.</li>
+<li><strong>Mobile-first</strong> — full-width search row on phones with a 16px input so iOS Safari never auto-zooms, iOS-style fade transitions, and a clickable whole product card.</li>
+<li><strong>Loves that survive</strong> — saved in the database and in localStorage, healed from the browser copy after a Vercel /tmp reset, and moved to the account at login without double-counting.</li></ul></section>
+  <section><h2>The hard part</h2><p>Two hosts, two truths. Vercel is fast but /tmp is ephemeral, so orders and admin changes can vanish there; alwaysdata is persistent but only 256 MB of RAM, so npm install gets OOM-killed. The fix was a zip that ships pre-installed trimmed node_modules — no install step at all — and a 192 MB heap cap that keeps the shop under the limit.</p></section>
+  <section><h2>Outcome</h2><p>Live at kolpocraft-nine.vercel.app, homepage rendering the SSC bundle at ৳1500, with COD ৳60 in Dhaka / ৳120 outside / free over ৳500, and a persistent database on alwaysdata.</p></section>
+  <div class="case-actions">
+    <a class="btn primary" href="https://kolpocraft-nine.vercel.app" target="_blank" rel="noopener">Visit live shop ↗</a>
+    <a class="btn outline" href="../index.html#work">← Back to all work</a>
+  </div>
+  <nav class="case-next"><a href="exam-platform.html">Next project: <strong>Online Exam Platform →</strong></a></nav>
+</main>
+<footer><p class="foot-big">Nohin Tafsir Rafi</p><p>© <span id="year"></span> · Dhaka, Bangladesh · Built with GSAP, hosted on GitHub Pages</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

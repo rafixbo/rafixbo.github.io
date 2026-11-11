@@ -1,0 +1,23 @@
+/* Case-study pages — shares style.css, adds only case layout */
+.case{max-width:860px;margin:0 auto;padding:140px 5vw 80px}
+.case-back{margin-bottom:22px}
+.case-back a{color:var(--accent);font-weight:600}
+.case-cover{height:300px;border-radius:28px;padding:30px;display:flex;flex-direction:column;margin-bottom:34px}
+.case-cover .mono{font-family:Sora;font-size:96px;font-weight:800;line-height:1;color:rgba(255,255,255,.92)}
+.case-cover .cover-tag{margin-top:auto;color:rgba(255,255,255,.92);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.case-head h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 6px}
+.case-intro{font-size:19px;color:var(--muted);margin:18px 0 30px}
+.case-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;margin-bottom:36px}
+.case-meta strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.case-meta span{font-weight:600;font-size:14.5px}
+.case section{margin-bottom:36px}
+.case section h2{font-size:26px;margin-bottom:12px}
+.case section p{color:var(--muted);font-size:17px}
+.case-list{list-style:none;display:grid;gap:14px}
+.case-list li{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;color:var(--muted);font-size:15.5px}
+.case-list li strong{color:var(--ink)}
+.case-actions{display:flex;gap:14px;flex-wrap:wrap;margin:40px 0 28px}
+.case-next{border-top:1px solid var(--line);padding-top:24px;font-size:17px}
+.case-next a strong{color:var(--accent)}
+@media(max-width:760px){.case-meta{grid-template-columns:1fr}.case-cover{height:220px}.case-cover .mono{font-size:64px}}

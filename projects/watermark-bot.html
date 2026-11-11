@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watermark Remover Bot — Nohin Tafsir Rafi</title>
+<meta name="description" content="A Telegram bot that removes video watermarks with ffmpeg delogo, a setup wizard, per-position controls and a RAM guard — built for lecture videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav">
+  <a class="logo" href="../index.html">Nohin Tafsir Rafi</a>
+  <nav><a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a></nav>
+  <a class="nav-cta" href="../index.html#contact">Contact →</a>
+</header>
+<main class="case">
+  <p class="case-back"><a href="../index.html#work">← All work</a></p>
+  <div class="cover cover-slate case-cover"><span class="mono">WB</span><span class="cover-tag">Bot · Video Tools</span></div>
+  <div class="case-head">
+    <div><p class="kicker">Case study · 2026</p><h1>Watermark Remover Bot</h1></div>
+    <span class="status">Built</span>
+  </div>
+  <p class="case-intro">A Telegram bot that removes video watermarks with ffmpeg delogo, a setup wizard, per-position controls and a RAM guard — built for lecture videos.</p>
+  <div class="case-meta">
+    <div><strong>Year</strong><span>2026</span></div>
+    <div><strong>Status</strong><span>Built</span></div>
+    <div><strong>Stack</strong><span>Python, Telethon, FFmpeg</span></div>
+  </div>
+  <section><h2>The problem</h2><p>Lecture videos carry a channel watermark in the corner. Students want a clean copy, but re-encoding by hand is slow, and auto-detection keeps picking the wrong corner — once, the teacher's face.</p></section>
+  <section><h2>What was built</h2><ul class="case-list"><li><strong>Precise delogo</strong> — a fixed top-left box (256×39 at 10,7), medium strength, crf 20, after the auto-detector wrongly picked top-right.</li>
+<li><strong>Owner controls</strong> — /setpos TOP_LEFT / TOP_RIGHT / BOTTOM_LEFT / BOTTOM_RIGHT, owner-only, no restart needed.</li>
+<li><strong>Setup wizard and Bangla guide</strong> — so anyone can run it, not just the developer.</li>
+<li><strong>RAM guard</strong> — warn at 512 MB free, critical at 256 MB, clean first, then skip if still low; /ramclean plus a 60-second watchdog.</li></ul></section>
+  <section><h2>The hard part</h2><p>A full 540-second test came out clean: 1280×720, 137 MB down to 108 MB, watermark gone. The remaining limits are honest ones — Telethon MTProto is blocked from this VM, so the bot runs on Windows / VPS, and the 108 MB output stays local because the Bot API caps uploads at 50 MB.</p></section>
+  <section><h2>Outcome</h2><p>A clean 540s re-encode, a measured watermark box, and a bot that knows exactly where the watermark is — and where it isn't.</p></section>
+  <div class="case-actions">
+    
+    <a class="btn outline" href="../index.html#work">← Back to all work</a>
+  </div>
+  <nav class="case-next"><a href="shikho-premium.html">Next project: <strong>Shikho Premium →</strong></a></nav>
+</main>
+<footer><p class="foot-big">Nohin Tafsir Rafi</p><p>© <span id="year"></span> · Dhaka, Bangladesh · Built with GSAP, hosted on GitHub Pages</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="case.js"></script>
+</body>
+</html>
