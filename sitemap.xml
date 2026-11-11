@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://rafixbo.github.io/</loc><priority>1.0</priority></url>
+  <url><loc>https://rafixbo.github.io/now.html</loc><priority>0.7</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/shikho-premium.html</loc><priority>0.8</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/kolpocraft.html</loc><priority>0.8</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/exam-platform.html</loc><priority>0.8</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/course-lms.html</loc><priority>0.8</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/stream-bot.html</loc><priority>0.8</priority></url>
+  <url><loc>https://rafixbo.github.io/projects/watermark-bot.html</loc><priority>0.8</priority></url>
+</urlset>

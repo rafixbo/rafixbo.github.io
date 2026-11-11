@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Now — Nohin Tafsir Rafi</title>
+<meta name="description" content="What Nohin Tafsir Rafi is working on now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="index.html">Nohin Tafsir Rafi</a>
+  <nav><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+  <a class="nav-cta" href="index.html#contact">Contact →</a>
+</header>
+<main class="section" style="padding-top:150px">
+  <p class="kicker">Now · November 2026</p>
+  <h2 class="section-title">What I'm working on <em>right now.</em></h2>
+  <div class="cap-grid">
+    <div class="cap"><span class="cap-num">01</span><h3>Shikho Premium — release</h3><p>Release APK signing, Vercel backend health, database migration and the Next.js admin deploy. The backend is live; the admin and the seed data are the last pieces.</p></div>
+    <div class="cap"><span class="cap-num">02</span><h3>Exam platform — free for students</h3><p>Keeping the Bangla-first exam platform free for SSC / HSC students, and looking for grant and donation support to pay for hosting.</p></div>
+    <div class="cap"><span class="cap-num">03</span><h3>KOLPOCRAFT — the shop</h3><p>SSC / HSC practical khatas, live on Vercel with alwaysdata as the persistent host. Login-gated ordering, admin-approved reviews.</p></div>
+    <div class="cap"><span class="cap-num">04</span><h3>This portfolio</h3><p>Rebuilt as a light, premium, GSAP-animated site with a case study for every project — and a projects.json file so a new project takes minutes to add.</p></div>
+  </div>
+  <p style="color:var(--muted);margin-top:32px">This page is a snapshot, not a promise — when the work changes, this page should change with it. Edit <code>now.html</code> in the repo to update it.</p>
+  <p style="margin-top:20px"><a class="btn primary" href="index.html">← Back to the portfolio</a></p>
+</main>
+<footer><p class="foot-big">Nohin Tafsir Rafi</p><p>© <span id="year"></span> · Dhaka, Bangladesh</p></footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

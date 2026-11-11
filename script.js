@@ -1,84 +1,132 @@
+/* Rafi portfolio — v2
+   Data comes from projects.json. If fetch fails (file://), FALLBACK_PROJECTS is used.
+   Featured = first project. Grid = the rest. Filters match the tag field. */
 const FALLBACK_PROJECTS = [
-  {title:"Shikho Premium",tag:"Online Learning Platform",description:"Full premium learning platform — Flutter student app with secure HLS video, NestJS + PostgreSQL backend, Next.js admin, Bunny.net Stream, wallet and manual bKash / Nagad payments.",tech:["Flutter","NestJS","PostgreSQL","Next.js","Bunny.net"],year:"2026",link:"https://shikho-premium-backend.vercel.app/api/v1/health",linkLabel:"Backend API",status:"In production"},
-  {title:"KOLPOCRAFT",tag:"E-commerce · Practical Khata Shop",description:"SSC / HSC handwritten practical khata shop — login-gated ordering, admin-approved reviews, categories and a smooth mobile-first storefront.",tech:["Node.js","SQLite","Vercel"],year:"2026",link:"https://kolpocraft-nine.vercel.app",linkLabel:"Visit live shop",status:"Live"},
-  {title:"Online Exam Platform",tag:"EdTech · SSC / HSC",description:"Bangla-first exam platform — exam-by-code, 1 mark per correct, no negative marking, admin question bank with JSON import.",tech:["TypeScript","Next.js","Prisma"],year:"2026",link:"",linkLabel:"",status:"In production"},
-  {title:"Course LMS Platform",tag:"EdTech · Courses",description:"SSC / HSC lectures, exams and notes plus paid video courses with payments and certificates.",tech:["Next.js","TypeScript","Flutter"],year:"2026",link:"",linkLabel:"",status:"In production"},
-  {title:"Telegram Stream Bot",tag:"Bot · Automation",description:"Lecture downloader bot posting streams into forum topics in a premium style, with RAM auto-clean so it never crashes on overload.",tech:["Python","Pyrogram","Flask"],year:"2026",link:"",linkLabel:"",status:"Live"},
-  {title:"Watermark Remover Bot",tag:"Bot · Video Tools",description:"Removes video watermarks with ffmpeg delogo, setup wizard, per-position controls and a RAM guard.",tech:["Python","Telethon","FFmpeg"],year:"2026",link:"",linkLabel:"",status:"Built"}
+  {title:"Shikho Premium",tag:"Online Learning Platform",description:"Full premium learning platform — Flutter student app with secure HLS video, NestJS + PostgreSQL backend, Next.js admin, Bunny.net Stream, wallet and manual bKash / Nagad payments.",tech:["Flutter","NestJS","PostgreSQL","Next.js","Bunny.net"],year:"2026",link:"https://shikho-premium-backend.vercel.app/api/v1/health",linkLabel:"Backend API",status:"In production",slug:"shikho-premium"},
+  {title:"KOLPOCRAFT",tag:"E-commerce · Practical Khata Shop",description:"SSC / HSC handwritten practical khata shop — login-gated ordering, admin-approved reviews, categories and a smooth mobile-first storefront.",tech:["Node.js","SQLite","Vercel"],year:"2026",link:"https://kolpocraft-nine.vercel.app",linkLabel:"Visit live shop",status:"Live",slug:"kolpocraft"},
+  {title:"Online Exam Platform",tag:"EdTech · SSC / HSC",description:"Bangla-first exam platform — exam-by-code, 1 mark per correct, no negative marking, admin question bank with JSON import.",tech:["TypeScript","Next.js","Prisma"],year:"2026",link:"",linkLabel:"",status:"In production",slug:"exam-platform"},
+  {title:"Course LMS Platform",tag:"EdTech · Courses",description:"SSC / HSC lectures, exams and notes plus paid video courses with payments and certificates.",tech:["Next.js","TypeScript","Flutter"],year:"2026",link:"",linkLabel:"",status:"In production",slug:"course-lms"},
+  {title:"Telegram Stream Bot",tag:"Bot · Automation",description:"Lecture downloader bot posting streams into forum topics in a premium style, with RAM auto-clean so it never crashes on overload.",tech:["Python","Pyrogram","Flask"],year:"2026",link:"",linkLabel:"",status:"Live",slug:"stream-bot"},
+  {title:"Watermark Remover Bot",tag:"Bot · Video Tools",description:"Removes video watermarks with ffmpeg delogo, setup wizard, per-position controls and a RAM guard.",tech:["Python","Telethon","FFmpeg"],year:"2026",link:"",linkLabel:"",status:"Built",slug:"watermark-bot"}
 ];
 
-const SKILLS = [
-  ["TypeScript","Frontend + backend"],["Next.js","Web apps"],["Flutter","Android apps"],
-  ["Node.js","APIs & shops"],["Python","Bots & automation"],["Prisma","Databases"],
-  ["PostgreSQL","Backend"],["Telegram Bot API","Bots"],["Vercel","Hosting"],["Git & GitHub","Workflow"]
-];
-
+const COVERS = ["cover-blue","cover-violet","cover-emerald","cover-amber","cover-rose","cover-slate"];
 let projects = [...FALLBACK_PROJECTS];
 let activeFilter = "all";
+
+function initials(title){
+  return title.split(/[\s&]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+}
+function coverClass(p, i){ return COVERS[i % COVERS.length]; }
+function caseLink(p){ return p.slug ? `projects/${p.slug}.html` : "#work"; }
 
 async function loadProjects(){
   try{
     const res = await fetch("projects.json", {cache:"no-store"});
     if(res.ok){ const data = await res.json(); if(Array.isArray(data) && data.length) projects = data; }
-  }catch(e){ /* file:// or offline — fallback data above is used */ }
-  renderProjects();
+  }catch(e){ /* offline / file:// — fallback above */ }
+  renderAll();
 }
 
-function cardHTML(p){
+function featuredHTML(p, i){
+  const link = p.link ? `<a class="featured-link" href="${p.link}" target="_blank" rel="noopener">${p.linkLabel || "Visit ↗"}</a>` : "";
+  return `<div class="featured-card">
+    <div class="cover ${coverClass(p,i)} featured-cover">
+      <span class="mono">${initials(p.title)}</span>
+      <div class="cover-ui"><div class="bar"></div><div class="bar short"></div><div class="row"><span class="chip"></span><span class="chip ghost"></span><span class="chip ghost"></span></div></div>
+    </div>
+    <div class="featured-body">
+      <span class="tag">Featured · ${p.tag || ""}</span>
+      <h3>${p.title}</h3><p>${p.description}</p>
+      <div class="tech">${(p.tech||[]).map(t=>`<span>${t}</span>`).join("")}</div>
+      <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+        <a class="featured-link" href="${caseLink(p)}">Read the case study →</a>${link}
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardHTML(p, i){
   const link = p.link ? `<a class="project-link" href="${p.link}" target="_blank" rel="noopener">${p.linkLabel || "Visit ↗"}</a>` : `<span class="project-link" style="opacity:.45">No public link</span>`;
   return `<article class="project-card">
-    <div class="project-top"><span class="project-tag">${p.tag || ""}</span><span class="status">${p.status || "Live"}</span></div>
-    <h3>${p.title}</h3><p>${p.description}</p>
-    <div class="tech">${(p.tech||[]).map(t=>`<span>${t}</span>`).join("")}</div>
-    <div class="project-foot"><span class="year">${p.year || ""}</span>${link}</div>
+    <a class="cover ${coverClass(p,i)}" href="${caseLink(p)}" aria-label="${p.title} case study">
+      <span class="mono">${initials(p.title)}</span>
+      <span class="cover-tag">${p.tag || ""}</span>
+    </a>
+    <div class="project-body">
+      <div class="project-top"><span class="status">${p.status || "Live"}</span><span class="year">${p.year || ""}</span></div>
+      <h3><a href="${caseLink(p)}">${p.title}</a></h3>
+      <p>${p.description}</p>
+      <div class="tech">${(p.tech||[]).map(t=>`<span>${t}</span>`).join("")}</div>
+      <div class="project-foot"><a class="project-link" href="${caseLink(p)}">Case study →</a>${link}</div>
+    </div>
   </article>`;
 }
 
-function renderProjects(){
-  const grid = document.getElementById("projectGrid");
-  const list = projects.filter(p => activeFilter==="all" || (p.tag||"").includes(activeFilter));
-  grid.innerHTML = list.map(cardHTML).join("");
-  document.getElementById("emptyMsg").classList.toggle("hidden", list.length>0);
-  if(window.gsap) gsap.fromTo(".project-card",{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.07,overwrite:true});
+function matches(p){
+  if(activeFilter === "all") return true;
+  return (p.tag || "").includes(activeFilter);
 }
 
-document.getElementById("skillsGrid").innerHTML = SKILLS.map(([s,d])=>`<span class="skill">${s}<small>${d}</small></span>`).join("");
+function renderAll(){
+  const featuredEl = document.getElementById("featured");
+  const grid = document.getElementById("projectGrid");
+  const featured = projects[0];
+  const rest = projects.slice(1).filter(matches);
+  if(featured && matches(featured)){
+    featuredEl.innerHTML = featuredHTML(featured, 0);
+    featuredEl.classList.remove("hidden");
+  } else {
+    featuredEl.innerHTML = ""; featuredEl.classList.add("hidden");
+  }
+  grid.innerHTML = rest.map((p, idx) => cardHTML(p, idx + 1)).join("");
+  document.getElementById("emptyMsg").classList.toggle("hidden", rest.length > 0 || (featured && matches(featured)));
+  if(window.gsap){
+    gsap.fromTo(".project-card, .featured-card", {y:28, opacity:0}, {y:0, opacity:1, duration:.65, stagger:.07, overwrite:true, ease:"power3.out"});
+  }
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
-document.querySelectorAll(".filter").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active"); activeFilter = btn.dataset.filter; renderProjects();
+document.querySelectorAll(".filter[data-filter]").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter[data-filter]").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    renderAll();
   });
 });
 
-/* Add-project modal — adds live, and lets Rafi download the updated projects.json to commit */
+/* Add-project modal */
 const modal = document.getElementById("modal");
 const openModal = ()=>modal.classList.remove("hidden");
 const closeModal = ()=>modal.classList.add("hidden");
 document.getElementById("addProjectBtn").addEventListener("click", openModal);
 document.getElementById("modalClose").addEventListener("click", closeModal);
 modal.addEventListener("click", e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
 
 document.getElementById("projectForm").addEventListener("submit", e=>{
   e.preventDefault();
   const f = new FormData(e.target);
+  const title = (f.get("title")||"").trim();
   const p = {
-    title: f.get("title").trim(),
-    tag: f.get("tag").trim(),
-    description: f.get("description").trim(),
-    tech: (f.get("tech")||"").split(",").map(s=>s.trim()).filter(Boolean),
-    year: (f.get("year")||"2026").trim(),
-    link: (f.get("link")||"").trim(),
-    linkLabel: (f.get("linkLabel")||"Visit ↗").trim(),
-    status: (f.get("status")||"Live").trim()
+    title,
+    tag: (f.get("tag")||"").trim(),
+    description: (f.get("description")||"").trim(),
+    tech: String(f.get("tech")||"").split(",").map(s=>s.trim()).filter(Boolean),
+    year: String(f.get("year")||"2026").trim(),
+    link: String(f.get("link")||"").trim(),
+    linkLabel: String(f.get("linkLabel")||"Visit ↗").trim(),
+    status: String(f.get("status")||"Live").trim(),
+    slug: title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "new-project"
   };
   projects.unshift(p);
   activeFilter = "all";
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active", b.dataset.filter==="all"));
-  renderProjects(); closeModal(); e.target.reset();
+  document.querySelectorAll(".filter[data-filter]").forEach(b=>b.classList.toggle("active", b.dataset.filter==="all"));
+  renderAll(); closeModal(); e.target.reset();
   document.getElementById("downloadBtn").classList.remove("hidden");
-  document.getElementById("projects").scrollIntoView({behavior:"smooth"});
+  document.getElementById("work").scrollIntoView({behavior:"smooth"});
   alert("Added! To keep it live on GitHub, click 'Download updated projects.json' in the form, replace projects.json in the repo, and push.");
 });
 
@@ -91,32 +139,22 @@ document.getElementById("downloadBtn").addEventListener("click", ()=>{
 
 /* Mobile menu */
 document.getElementById("menuBtn").addEventListener("click", ()=>{
-  document.querySelector(".nav nav").classList.toggle("open");
+  document.getElementById("mainNav").classList.toggle("open");
 });
-document.querySelectorAll(".nav nav a").forEach(a=>a.addEventListener("click", ()=>document.querySelector(".nav nav").classList.remove("open")));
+document.querySelectorAll("#mainNav a").forEach(a=>a.addEventListener("click", ()=>document.getElementById("mainNav").classList.remove("open")));
 
-/* GSAP animations */
+/* Smooth scroll + GSAP */
 loadProjects();
 if(window.gsap){
   gsap.registerPlugin(ScrollTrigger);
-  gsap.timeline({defaults:{ease:"power3.out"}})
-    .from(".hero-name .line",{y:70,opacity:0,duration:.9,stagger:.12})
-    .from(".hero-eyebrow, .hero-role, .hero-sub, .hero-actions, .hero-stats, .hero-avatar",{y:26,opacity:0,duration:.7,stagger:.08},"-=.4");
-  document.querySelectorAll(".reveal").forEach(el=>{
-    gsap.to(el,{opacity:1,y:0,duration:.8,ease:"power3.out",
-      scrollTrigger:{trigger:el,start:"top 88%"}});
+  gsap.from(".hero h1 .h-line", {yPercent:110, duration:.9, stagger:.12, ease:"power3.out"});
+  gsap.from(".hero-kicker, .hero-sub, .hero-actions, .hero-meta, .hero-card", {y:26, opacity:0, duration:.8, stagger:.09, ease:"power3.out", delay:.15});
+  gsap.utils.toArray(".section, .featured, .project-card").forEach(el=>{
+    gsap.from(el, {y:36, opacity:0, duration:.85, ease:"power3.out",
+      scrollTrigger:{trigger:el, start:"top 88%"}});
   });
-  gsap.to(".hero-glow",{y:60,scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
-  gsap.to("#progress",{width:"100%",ease:"none",scrollTrigger:{trigger:document.body,start:"top top",end:"bottom bottom",scrub:.3}});
-  document.querySelectorAll("[data-count]").forEach(el=>{
-    const target = +el.dataset.count;
-    gsap.to({v:0},{v:target,duration:1.4,ease:"power2.out",
-      scrollTrigger:{trigger:el,start:"top 90%"},
-      onUpdate:function(){ el.textContent = Math.round(this.targets()[0].v); }});
-  });
-  /* Custom cursor */
-  const cursor = document.getElementById("cursor");
-  window.addEventListener("mousemove", e=>gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:.25}));
-} else {
-  document.querySelectorAll(".reveal").forEach(el=>el.style.opacity=1);
+  gsap.to("#progress", {width:"100%", ease:"none",
+    scrollTrigger:{trigger:document.body, start:"top top", end:"bottom bottom", scrub:.3}});
+  const nav = document.getElementById("nav");
+  ScrollTrigger.create({start:80, onUpdate:self=>{ nav.style.boxShadow = self.scroll() > 80 ? "0 14px 40px rgba(10,12,20,.12)" : "0 10px 30px rgba(10,12,20,.07)"; }});
 }
