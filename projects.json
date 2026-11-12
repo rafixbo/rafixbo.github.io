@@ -1,6 +1,6 @@
 [
   {
-    "description": "Full premium learning platform for Bangladesh \u2014 Flutter student app with secure HLS video + moving watermark, NestJS + PostgreSQL backend, Next.js admin, Bunny.net Stream, wallet and manual bKash / Nagad payments.",
+    "description": "Full premium learning platform for Bangladesh — Flutter student app with secure HLS video + moving watermark, NestJS + PostgreSQL backend, Next.js admin, Bunny.net Stream, wallet and manual bKash / Nagad payments.",
     "link": "https://shikho-premium-backend.vercel.app/api/v1/health",
     "linkLabel": "Backend API",
     "status": "In production",
@@ -17,26 +17,27 @@
     "slug": "shikho-premium"
   },
   {
-    "description": "SSC / HSC handwritten practical khata shop \u2014 login-gated ordering, admin-approved reviews, categories, search and a smooth mobile-first storefront. Live on Vercel, persistent host on alwaysdata.",
-    "link": "https://kolpocraft-nine.vercel.app",
+    "description": "Client project — SSC / HSC handwritten practical khata shop, now live. Login-gated ordering, admin-approved reviews, categories, search and a smooth mobile-first storefront. Live on alwaysdata, also on Vercel.",
+    "link": "http://bestpractical.alwaysdata.net/",
     "linkLabel": "Visit live shop",
     "status": "Live",
-    "tag": "E-commerce \u00b7 Practical Khata Shop",
+    "tag": "Client Project · E-commerce · Practical Khata Shop",
     "tech": [
       "Node.js",
       "SQLite",
-      "Vercel"
+      "Vercel",
+      "alwaysdata"
     ],
     "title": "KOLPOCRAFT",
     "year": "2026",
     "slug": "kolpocraft"
   },
   {
-    "description": "Bangla-first exam platform for Bangladeshi students \u2014 exam-by-code, 1 mark per correct answer, no negative marking, admin question bank with JSON import, and a smooth soft UI built to match Progga.",
+    "description": "Bangla-first exam platform for Bangladeshi students — exam-by-code, 1 mark per correct answer, no negative marking, admin question bank with JSON import, and a smooth soft UI built to match Progga.",
     "link": "",
     "linkLabel": "",
     "status": "In production",
-    "tag": "EdTech \u00b7 SSC / HSC",
+    "tag": "EdTech · SSC / HSC",
     "tech": [
       "TypeScript",
       "Next.js",
@@ -47,11 +48,11 @@
     "slug": "exam-platform"
   },
   {
-    "description": "Course LMS combining SSC / HSC lectures, exams and notes with a general paid course-selling platform \u2014 video courses, payments and certificates, with a solid professional UI.",
+    "description": "Course LMS combining SSC / HSC lectures, exams and notes with a general paid course-selling platform — video courses, payments and certificates, with a solid professional UI.",
     "link": "",
     "linkLabel": "",
     "status": "In production",
-    "tag": "EdTech \u00b7 Courses",
+    "tag": "EdTech · Courses",
     "tech": [
       "Next.js",
       "TypeScript",
@@ -66,7 +67,7 @@
     "link": "",
     "linkLabel": "",
     "status": "Live",
-    "tag": "Bot \u00b7 Automation",
+    "tag": "Bot · Automation",
     "tech": [
       "Python",
       "Pyrogram",
@@ -77,11 +78,11 @@
     "slug": "stream-bot"
   },
   {
-    "description": "Telegram bot that removes video watermarks with ffmpeg delogo, a setup wizard, per-position controls and a RAM guard \u2014 built for lecture videos.",
+    "description": "Telegram bot that removes video watermarks with ffmpeg delogo, a setup wizard, per-position controls and a RAM guard — built for lecture videos.",
     "link": "",
     "linkLabel": "",
     "status": "Built",
-    "tag": "Bot \u00b7 Video Tools",
+    "tag": "Bot · Video Tools",
     "tech": [
       "Python",
       "Telethon",
